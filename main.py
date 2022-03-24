@@ -4,7 +4,9 @@ while True:
 
     soma_total = 0 # Acumulador do cálculo
     reverter = 10 # Variável para multiplicar de forma decrescente
-    verificar_numerico = cpf.isnumeric() # verificando se é número
+    
+    # verificando se é número
+    verificar_numerico = cpf.isnumeric() 
     verificar_qtd = len(cpf)
 
     if verificar_numerico == False:
@@ -32,11 +34,13 @@ while True:
             soma_total = 0
             cpf_analisado += str(digito)
 
-    if cpf == cpf_analisado:
+    # Evitando sequência de números. Ex.: 11111111111
+    sequencia = cpf_analisado == str(cpf_analisado[0]) * len(cpf)
+
+    if cpf == cpf_analisado and not sequencia:
         print(f'O CPF {cpf_analisado} é Válido')
     else:
         print(f'O CPF {cpf_analisado} é inválido')
-    
     sair = input('Deseja Sair? (S/N): ')
 
     if sair == 's' or sair == 'S':
