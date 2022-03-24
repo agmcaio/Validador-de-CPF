@@ -1,16 +1,19 @@
-continuar = True
-
-while continuar == True:
+while True:
     cpf = input('Insira seu CPF (sem espaço e sem pontuação): ')
-    cpf_analisado = cpf[:-2] # Retirando os últimos digitos do CPF fornecido
+    cpf_analisado = cpf[:9] # Retirando os últimos digitos do CPF fornecido
 
     soma_total = 0 # Acumulador do cálculo
     reverter = 10 # Variável para multiplicar de forma decrescente
-    verificar = cpf.isnumeric() # verificando se é número
+    verificar_numerico = cpf.isnumeric() # verificando se é número
+    verificar_qtd = len(cpf)
 
-    if verificar == False:
+    if verificar_numerico == False:
         print('Insira apenas números.')
-        break
+        continue
+
+    if verificar_qtd < 11 or verificar_qtd > 11:
+        print('Isso não é um CPF!')
+        continue
 
     for i in range(19):
         if i > 8: 
@@ -36,5 +39,6 @@ while continuar == True:
     
     sair = input('Deseja Sair? (S/N): ')
 
-    if sair == 's'.upper():
+    if sair == 's' or sair == 'S':
+        print('Até a próxima!')
         break
